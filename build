@@ -1,0 +1,6 @@
+#!/bin/sh
+docker pull golang:1.5.1-alpine
+mkdir go
+git clone https://github.com/mesosphere/mesos-dns "$PWD"/go/src/github.com/mesosphere/mesos-dns
+docker run -it --rm -v "$PWD"/go:/go -v "$PWD"/godepbuild:/godepbuild golang:1.5.1-alpine /godepbuild
+docker build -t asdfsx/mesos-dns:0.5.1-alpine .
